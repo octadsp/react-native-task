@@ -6,10 +6,10 @@ import { createStackNavigator } from "@react-navigation/stack"
 
 import { useTheme } from "native-base"
 
-import Hello from "./src/screens/hello"
 import IndexHome from "./src/screens/index"
 import LoginForm from "./src/screens/login"
 import RegisterForm from "./src/screens/register"
+import DashboardScreen from "./src/screens/dashboard"
 
 const Stack = createStackNavigator()
 
@@ -47,7 +47,15 @@ export default function Container () {
                     gestureDirection: "horizontal"
                 }}
                 />
+                <Stack.Screen
+                name="DashboardScreen"
+                component={DashboardScreen}
+                options={{
+                    gestureDirection: "horizontal"
+                }}
+                />
             </Stack.Navigator>
+            
         </NavigationContainer>
     )
 }

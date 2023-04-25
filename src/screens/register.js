@@ -90,7 +90,7 @@ space={4}
           marginTop={5}
           py="2"
             >
-            Login
+            Register
           </Button>
 
           <HStack justifyContent="center" paddingTop="3">

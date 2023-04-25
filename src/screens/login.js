@@ -79,6 +79,7 @@ space={4}
           mx="auto"
           marginTop={10}
           py="2"
+          onPress={()=> navigation.navigate("DashboardScreen")}
             >
             Login
           </Button>
