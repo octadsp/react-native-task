@@ -65,6 +65,9 @@ export default function App() {
     darky: {
       400: "#111"
     },
+    blueLight: {
+      400: "#81C8FF"
+    }
   };
 
   const theme = extendTheme({
