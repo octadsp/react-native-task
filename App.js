@@ -27,8 +27,9 @@ import {
 
 import Container from "./container"
 
-import Header from './src/components/header';
-import Content from './src/components/content';
+import { NavigationContainer } from "@react-navigation/native";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { UserContextProvider } from "./src/context/userContext";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -83,12 +84,19 @@ export default function App() {
 
   if (!fontsLoaded){
     return;
-  } else {
-    return (
-      <NativeBaseProvider theme={theme}>
-        <Container/>
-      </NativeBaseProvider>
-    )
-  }
-  return
+  } 
+
+  const client = new QueryClient();
+
+  return (
+      <NavigationContainer>
+        <QueryClientProvider client={client}>
+          <NativeBaseProvider theme={theme}>
+            <UserContextProvider>
+              <Container/>
+            </UserContextProvider>
+          </NativeBaseProvider>
+        </QueryClientProvider>
+      </NavigationContainer>
+    );
 }
