@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
-import { Image, View } from "react-native";
+import { View } from "react-native";
 import { useMutation } from "react-query";
 import { showMessage } from "react-native-flash-message";
+import AuthLogo from "../../assets/loginIcon.png"
 
 // Storage
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -13,6 +14,7 @@ import { UserContext } from "../context/userContext"
 //Import Component Native Base
 import {
   Box,
+  Image,
   Heading,
   Container,
   Center,
@@ -72,21 +74,22 @@ export default function LoginForm({ navigation }) {
         mx="auto"
       >
         <Center>
-            <Image source={require('../../assets/loginIcon.png')} size="sm" />
+            <Image source={AuthLogo} alt="AuthLogo" />
         </Center>
       </Container>
 
       <VStack
         justifyContent="center"
         mx="auto"
-        w="72"
+        w="80"
         space={4}
       >
         <Heading
           marginTop={6}
           color="black"
           style= {{
-              fontWeight: "bold"
+              fontWeight: "bold",
+              fontSize: 27,
           }}
         >
           Login
@@ -97,10 +100,13 @@ export default function LoginForm({ navigation }) {
           borderColor="muted.400"
           backgroundColor="muted.200"
           color="black"
+          _input={{
+            fontSize: 15,
+          }}
           placeholder="Email"
           keyboardType={"email-address"}
           placeholderTextColor="muted.400"
-          py="1"
+          py="2"
           onChangeText={(value) => handleChangeText("email", value)}
         />
 
@@ -109,20 +115,27 @@ export default function LoginForm({ navigation }) {
           borderColor="muted.400"
           backgroundColor="muted.200"
           color="black"
+          _input={{
+            fontSize: 15,
+          }}
           placeholder="Password"
           secureTextEntry={true}
           placeholderTextColor="muted.400"
-          py="1"
+          py="2"
           onChangeText={(value) => handleChangeText("password", value)}
         />
       </VStack>
 
       <Button
         colorScheme="red"
-        w="72"
+        w="80"
         mx="auto"
-        marginTop={10}
-        py="2"
+        _text={{
+          fontSize: 17,
+          fontWeight: "bold",
+        }}
+        marginTop={12}
+        py="3"
         onPress={(e) => handleSubmit.mutate(e)}
       >
         Login

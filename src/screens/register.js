@@ -1,7 +1,8 @@
 import React, { useState} from "react";
-import { Image, View } from "react-native";
+import { View } from "react-native";
 import { useMutation } from "react-query";
 import { showMessage } from "react-native-flash-message";
+import AuthLogo from "../../assets/loginIcon.png"
 
 // Config
 import { API } from "../config/api";
@@ -9,6 +10,7 @@ import { API } from "../config/api";
 //Import Component Native Base
 import {
   Box,
+  Image,
   Heading,
   Container,
   Center,
@@ -120,10 +122,11 @@ export default function RegisterForm({ navigation }) {
         marginTop={10} 
         mx="auto"
       >
-        <Center>
+        <Center
+        >
             <Image 
-              source={require('../../assets/loginIcon.png')} 
-              size="sm" 
+              source={AuthLogo}
+              alt="AuthLogo"
             />
         </Center>
       </Container>
@@ -131,14 +134,15 @@ export default function RegisterForm({ navigation }) {
       <VStack
         justifyContent="center"
         mx="auto"
-        w="72"
+        width={"80"}
         space={4}
       >
         <Heading
           marginTop={6}
           color="black"
           style= {{
-              fontWeight: "bold"
+              fontWeight: "bold",
+              fontSize: 27,
           }}
         >
           Register
@@ -147,11 +151,15 @@ export default function RegisterForm({ navigation }) {
         <Input
           borderWidth="1"
           color="black"
+          fontSize={14}
+          _input={{
+            fontSize: 15,
+          }}
           borderColor="muted.400"
           backgroundColor="muted.200"
           placeholder="Email"
           placeholderTextColor="muted.400"
-          py="1"
+          py="2"
           keyboardType={"email-address"}
           onChangeText={(value) => handleChangeText("email", value)}
           value={formRegister?.email}
@@ -160,11 +168,15 @@ export default function RegisterForm({ navigation }) {
         <Input
           borderWidth="1"
           color="black"
+          fontSize={14}
+          _input={{
+            fontSize: 15,
+          }}
           borderColor="muted.400"
           backgroundColor="muted.200"
           placeholder="Name"
           placeholderTextColor="muted.400"
-          py="1"
+          py="2"
           onChangeText={(value) => handleChangeText("firstName", value)}
           value={formRegister?.firstName}
         />
@@ -172,11 +184,15 @@ export default function RegisterForm({ navigation }) {
         <Input
           borderWidth="1"
           color="black"
+          fontSize={14}
+          _input={{
+            fontSize: 15,
+          }}
           borderColor="muted.400"
           backgroundColor="muted.200"
           placeholder="Password"
           placeholderTextColor="muted.400"
-          py="1"
+          py="2"
           secureTextEntry={true}
           onChangeText={(value) => handleChangeText("password", value)}
           value={formRegister?.password}
@@ -186,17 +202,21 @@ export default function RegisterForm({ navigation }) {
 
           <Button
             colorScheme="red"
-            w="72"
+            w="80"
             mx="auto"
-            marginTop={5}
-            py="2"
+            _text={{
+              fontSize: 17,
+              fontWeight: "bold",
+            }}
+            marginTop={8}
+            py="3"
             onPress={(e) => handleSubmit.mutate(e)}
           >
             Register
           </Button>
 
           <HStack justifyContent="center" paddingTop="3">
-            <Text fontSize="xs" color="muted.700" fontWeight={100} >
+            <Text fontSize="sm" color="muted.700" fontWeight={100} >
               Join us before ?{" "}
             </Text>
             <Link
@@ -204,7 +224,7 @@ export default function RegisterForm({ navigation }) {
               _text={{ 
                   color: "danger.600", 
                   fontWeight: "bold", 
-                  fontSize: "xs", 
+                  fontSize: "sm", 
                   textDecoration: "none",
               }}
               onPress={()=> navigation.navigate("LoginForm")}
