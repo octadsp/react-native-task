@@ -1,9 +1,6 @@
 import React, { useState} from "react";
 import { Image, View } from "react-native";
 import { useMutation } from "react-query";
-
-// Material Theme , Icon, etc
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { showMessage } from "react-native-flash-message";
 
 // Config
@@ -38,7 +35,7 @@ export default function RegisterForm({ navigation }) {
   }
 
   const handleSubmit = useMutation(async (e) => {
-    e.preventDefault();
+    e.persist();
     try {
 
       // Pengecekan Email Not Null

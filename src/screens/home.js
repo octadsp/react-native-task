@@ -1,38 +1,41 @@
-import * as React from "react";
+import React, { useContext, useState } from "react";
+import { UserContext } from "../context/userContext";
+import { Image, View, Platform, Pressable } from "react-native";
+import { showMessage } from "react-native-flash-message";
 
-import { Image, View, Platform } from 'react-native';
+// Storage
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-
-//Import Component Native Base
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import {
   Box,
   Heading,
   Container,
   Avatar,
-  TextArea,
-  Center,
   Text,
   VStack,
-  FormControl,
   Input,
-  Link,
-  Button,
-  Icon,
-  IconButton,
   HStack,
-  Divider,
   Select,
-  Pressable,
   CheckIcon,
 } from "native-base";
 
 
 export default function IndexHome() {
+  const [state, dispatch] = useContext(UserContext);
   
-  let [category, setCategory] = React.useState("")
-  let [status, setStatus] = React.useState("")
+  let [category, setCategory] = useState("")
+  let [status, setStatus] = useState("")
 
+  function handleLogout() {
+    AsyncStorage.removeItem("token");
+    dispatch({
+      type: "LOGOUT_SUCCESS",
+    });
+    showMessage({
+      message: "Logout Success!",
+      type: "success"
+    });
+  }
 
   return (
     <Box
@@ -69,11 +72,15 @@ space={4}
     <Text color="red.400">200 Lists</Text>
   </VStack>
 
+<Pressable
+onPress={handleLogout}
+>
   <Avatar
     size="md"
     source={require('../../assets/profile1.jpg')}
-  >
+    >
   </Avatar>
+    </Pressable>
 
 
 </HStack>
