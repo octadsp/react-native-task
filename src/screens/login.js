@@ -21,7 +21,7 @@ import {
   Divider,
 } from "native-base";
 
-export default function IndexHome({ navigation }) {
+export default function LoginForm({ navigation }) {
   return (
     <Box
     flex={1}

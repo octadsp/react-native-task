@@ -7,7 +7,6 @@ import FlashMessage from "react-native-flash-message"
 import Spinner from "react-native-loading-spinner-overlay"
 
 // Navigator
-import { NavigationContainer } from "@react-navigation/native"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { createStackNavigator } from "@react-navigation/stack"
 
