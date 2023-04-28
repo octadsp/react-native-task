@@ -35,7 +35,6 @@ export default function RegisterForm({ navigation }) {
   }
 
   const handleSubmit = useMutation(async (e) => {
-    e.persist();
     try {
 
       // Pengecekan Email Not Null

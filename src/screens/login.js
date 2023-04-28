@@ -39,7 +39,6 @@ export default function LoginForm({ navigation }) {
   }
 
   const handleSubmit = useMutation(async (e) => {
-    e.persist();
     try {
       const response = await API.post("/auth/login", formLogin);
       AsyncStorage.setItem("token", response.data.token);
